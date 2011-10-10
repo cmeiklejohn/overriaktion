@@ -1,28 +1,29 @@
-# -*- encoding: utf-8 -*-
+# encoding: UTF-8
+
 $:.push File.expand_path("../lib", __FILE__)
+
 require "overriaktion/version"
 
-Gem::Specification.new do |s|
-  s.name        = "overriaktion"
-  s.version     = Overriaktion::VERSION
-  s.authors     = ["Christopher Meiklejohn"]
-  s.email       = ["christopher.meiklejohn@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+Gem::Specification.new do |gem|
+  gem.name        = "overriaktion"
+  gem.version     = Overriaktion::VERSION
+  gem.authors     = ["Christopher Meiklejohn"]
+  gem.email       = ["christopher.meiklejohn@gmail.com"]
+  gem.homepage    = "https://github.com/cmeiklejohn/overriaktion"
+  gem.summary     = %q{Client gem for the Overriak service.}
+  gem.description = %q{Client gem for the Overriak service.}
 
-  s.rubyforge_project = "overriaktion"
+  gem.rubyforge_project = "overriaktion"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  gem.files         = `git ls-files`.split("\n")
+  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  gem.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
-  s.add_development_dependency('rdoc')
-  s.add_development_dependency('aruba')
-  s.add_development_dependency('rake','~> 0.9.2')
-  s.add_dependency('methadone')
+  gem.add_development_dependency('rdoc')
+  gem.add_development_dependency('aruba')
+  gem.add_development_dependency('rake','~> 0.9.2')
+  gem.add_development_dependency('rspec') 
+
+  gem.add_dependency('methadone')
 end
