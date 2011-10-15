@@ -2,7 +2,7 @@ module Overriaktion
   class Request
     include HTTParty
 
-    base_uri 'dont.overriak.com'
+    base_uri API_HOST
 
     format :json
 
