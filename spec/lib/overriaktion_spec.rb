@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Overriaktion do 
   describe Overriaktion::RiakCluster do 
     subject { Overriaktion::RiakCluster.new(JSON.parse(Overriaktion::MockedResponses::RIAK_CLUSTER)) }
+    specify { subject.id.should == 1 }
     specify { subject.name.should == "Localhost" }
   end
 
