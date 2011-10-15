@@ -21,6 +21,13 @@ describe Overriaktion do
     specify { subject.ip_address.should == "127.0.0.1" } 
     specify { subject.port.should == "8098" }
     specify { subject.username.should == "root" }
+
+    it "returns it's riak cluster" do 
+      stub_request(:get, "http://dont.overriak.com/riak_clusters/1.json").
+        to_return(:status => 200, :body => Overriaktion::MockedResponses::RIAK_CLUSTER, :headers => {})
+      riak_cluster = subject.riak_cluster
+      riak_cluster.should be_a_kind_of(Overriaktion::RiakCluster)
+    end
   end
 
   describe Overriaktion::Client do 
