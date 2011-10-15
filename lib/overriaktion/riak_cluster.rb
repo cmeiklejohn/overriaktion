@@ -1,4 +1,4 @@
 module Overriaktion
-  class Cluster
+  class RiakCluster < Model
   end
 end

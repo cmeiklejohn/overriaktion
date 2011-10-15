@@ -5,5 +5,6 @@ module Overriaktion
   autoload :Request,          "overriaktion/request"
   autoload :MockedResponses,  "overriaktion/mocked_responses"
 
-  autoload :Cluster,          "overriaktion/cluster"
+  autoload :Model,            "overriaktion/model"
+  autoload :RiakCluster,      "overriaktion/riak_cluster"
 end
