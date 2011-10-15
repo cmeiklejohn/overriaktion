@@ -11,7 +11,7 @@ a CLI.
 
 === Ruby client usage
 
-    client = Overriaktion::Client.new(:api_key => 'key') # => Overriaktion::Client
+    client = Overriaktion.new(:api_key => 'key') # => Overriaktion::Client
     client.riak_clusters # => [Overriaktion::RiakCluster]
     client.riak_cluster(1) # => Overriaktion::RiakCluster
     client.riak_cluster(id).riak_nodes # => [Overriaktion::RiakNode]

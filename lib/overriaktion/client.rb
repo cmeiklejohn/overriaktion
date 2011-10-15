@@ -4,7 +4,7 @@ module Overriaktion
 
     attr_accessor :request 
 
-    def initialize 
+    def initialize
       @request = Request.new
     end
 
