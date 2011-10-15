@@ -8,5 +8,7 @@ $LOAD_PATH << File.join(PROJECT_ROOT, "lib")
 Bundler.require
 
 require 'overriaktion'
+
 require 'httparty'
 require 'webmock/rspec'
+require 'json'
