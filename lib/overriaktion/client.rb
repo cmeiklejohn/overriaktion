@@ -1,5 +1,7 @@
 module Overriaktion
   class Client
+    include Singleton 
+
     attr_accessor :request 
 
     def initialize 

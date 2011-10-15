@@ -16,7 +16,7 @@ describe Overriaktion do
   end
 
   describe Overriaktion::Client do 
-    subject { Overriaktion::Client.new }
+    subject { Overriaktion::Client.instance }
 
     it "retrieves a list of riak clusters" do 
       stub_request(:get, "http://dont.overriak.com/riak_clusters.json").
