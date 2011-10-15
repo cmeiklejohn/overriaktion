@@ -5,6 +5,8 @@ module Overriaktion
   autoload :Request,          "overriaktion/request"
   autoload :Responses,        "overriaktion/responses"
 
+  autoload :Configuration,    "overriaktion/configuration"
+
   autoload :Model,            "overriaktion/model"
   autoload :RiakCluster,      "overriaktion/riak_cluster"
   autoload :RiakNode,         "overriaktion/riak_node"
@@ -14,18 +16,16 @@ module Overriaktion
   API_HOST = EndPoints::DEFAULT
 
   class << self
-    def new
+    def new(options = {})
       Client.instance
     end
 
-    def method_missing(method, *args, &block)
-      return super unless new.respond_to?(method)
-      new.send(method, *args, &block)
+    def configure
+      yield configuration
     end
 
-    def respond_to?(method, include_private=false)
-      new.respond_to?(method, include_private) || super(method, include_private)
+    def configuration 
+      Configuration.instance
     end
   end
-
 end
