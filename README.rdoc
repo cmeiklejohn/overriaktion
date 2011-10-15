@@ -1,6 +1,6 @@
 = Overriaktion
 
-Client for the overriaktion service.  Provides a ruby client library and
+Client for the Overriak service.  Provides a ruby client library and
 a CLI.
 
 == Installation
@@ -8,6 +8,8 @@ a CLI.
     gem install overriaktion
 
 == Usage
+
+=== Ruby client usage
 
     client = Overriaktion::Client.new(:api_key => 'key') # => Overriaktion::Client
     client.riak_clusters # => [Overriaktion::RiakCluster]
@@ -17,7 +19,7 @@ a CLI.
 
 == License
 
-Overriaktion is Copyright © 2011 Christopher Meiklejohn.  It is free software, and may be redistributed under the terms specified in the LICENSE file.
+Overriaktion and Overriak are Copyright © 2011 Christopher Meiklejohn.  Overriaktion is free software, and may be redistributed under the terms specified in the LICENSE file.
 
 == About
 
