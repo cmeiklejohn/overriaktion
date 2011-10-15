@@ -5,6 +5,14 @@ describe Overriaktion do
     subject { Overriaktion::RiakCluster.new(JSON.parse(Overriaktion::MockedResponses::RIAK_CLUSTER)) }
     specify { subject.id.should == 1 }
     specify { subject.name.should == "Localhost" }
+
+    it "returns it's riak nodes" do 
+      stub_request(:get, "http://dont.overriak.com/riak_clusters/1/riak_nodes.json").
+        to_return(:status => 200, :body => Overriaktion::MockedResponses::RIAK_NODES, :headers => {})
+      riak_nodes = subject.riak_nodes
+      riak_nodes.length.should == 1
+      riak_nodes.each { |riak_node| riak_node.should be_a_kind_of(Overriaktion::RiakNode) }
+    end
   end
   
   describe Overriaktion::RiakNode do 
