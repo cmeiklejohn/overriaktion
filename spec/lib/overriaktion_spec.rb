@@ -6,6 +6,14 @@ describe Overriaktion do
     specify { subject.id.should == 1 }
     specify { subject.name.should == "Localhost" }
   end
+  
+  describe Overriaktion::RiakNode do 
+    subject { Overriaktion::RiakNode.new(JSON.parse(Overriaktion::MockedResponses::RIAK_NODE)) }
+    specify { subject.id.should == 1 }
+    specify { subject.ip_address.should == "127.0.0.1" } 
+    specify { subject.port.should == "8098" }
+    specify { subject.username.should == "root" }
+  end
 
   describe Overriaktion::Client do 
     subject { Overriaktion::Client.new }
@@ -26,11 +34,18 @@ describe Overriaktion do
     end
 
     it "retrieves information about a clusters riak nodes" do 
-      pending
+      stub_request(:get, "http://dont.overriak.com/riak_clusters/1/riak_nodes.json").
+        to_return(:status => 200, :body => Overriaktion::MockedResponses::RIAK_NODES, :headers => {})
+      riak_nodes = subject.riak_nodes(1)
+      riak_nodes.length.should == 1
+      riak_nodes.each { |riak_node| riak_node.should be_a_kind_of(Overriaktion::RiakNode) }
     end
 
     it "retrieves information about a clusters single riak node" do
-      pending
+      stub_request(:get, "http://dont.overriak.com/riak_clusters/1/riak_nodes/1.json").
+        to_return(:status => 200, :body => Overriaktion::MockedResponses::RIAK_NODE, :headers => {})
+      riak_node = subject.riak_node(1, 1)
+      riak_node.should be_a_kind_of(Overriaktion::RiakNode)
     end
   end
 end

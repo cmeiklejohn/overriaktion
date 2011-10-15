@@ -7,4 +7,5 @@ module Overriaktion
 
   autoload :Model,            "overriaktion/model"
   autoload :RiakCluster,      "overriaktion/riak_cluster"
+  autoload :RiakNode,         "overriaktion/riak_node"
 end
