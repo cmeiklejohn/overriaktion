@@ -1,8 +1,8 @@
-Feature: Overriaktion
+Feature: Overriaktion CLI
 
-  In order to remotely administer the Overriak service
+  In order to remotely administer the Overriak service from the command line
   As a registered user with an API key
-  I should be able to access the remote API
+  I should be able to access the remote API via the CLI
 
   Scenario: Access help
     When I get help for "overriaktion"
