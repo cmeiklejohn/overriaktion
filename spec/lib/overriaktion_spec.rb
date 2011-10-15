@@ -13,6 +13,13 @@ describe Overriaktion do
       riak_nodes.length.should == 1
       riak_nodes.each { |riak_node| riak_node.should be_a_kind_of(Overriaktion::RiakNode) }
     end
+    
+    it "returns one riak node in it's cluster" do
+      stub_request(:get, "http://dont.overriak.com/riak_clusters/1/riak_nodes/1.json").
+        to_return(:status => 200, :body => Overriaktion::MockedResponses::RIAK_NODE, :headers => {})
+      riak_node = subject.riak_node(1)
+      riak_node.should be_a_kind_of(Overriaktion::RiakNode)
+    end
   end
   
   describe Overriaktion::RiakNode do 
