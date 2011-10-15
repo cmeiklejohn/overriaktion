@@ -14,7 +14,7 @@ module Overriaktion
   API_HOST = EndPoints::DEFAULT
 
   class << self
-    def new(options = {})
+    def new
       Client.instance
     end
 
