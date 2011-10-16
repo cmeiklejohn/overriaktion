@@ -8,6 +8,14 @@ module Overriaktion
       @request = Request.new
     end
 
+    def configure
+      yield configuration
+    end
+
+    def configuration 
+      Configuration.instance
+    end
+
     def riak_clusters
       response = @request.get("/riak_clusters.json")
       response.map { |riak_cluster| RiakCluster.new(riak_cluster) }
