@@ -2,12 +2,18 @@ module Overriaktion
   class Request
     include HTTParty
 
-    base_uri API_HOST
-
     format :json
 
+    def api_host
+      Configuration.api_host
+    end
+
+    def full_uri_for(uri)
+      "http://#{api_host}#{uri}"
+    end
+
     def get(uri) 
-      self.class.get(uri)
+      self.class.get(full_uri_for(uri))
     end
   end
 end
