@@ -10,6 +10,33 @@ module Overriaktion
       subject.new.should == subject.new
     end
 
+    describe 'once configured via the instantiation call' do 
+      subject do 
+        Overriaktion.new(:api_key => '2', :api_host => 'api-v2.overriak.com')
+      end
+
+      after do 
+        subject.configure do |config|
+          config.api_key  = nil
+          config.api_host = nil
+        end
+      end
+
+      it 'should retain that configuration' do 
+        subject.configuration.api_key.should  == '2'
+        subject.configuration.api_host.should == 'api-v2.overriak.com'
+      end
+
+      it "should honor that configuration when making an API request" do 
+        stub_request(:get, "http://api-v2.overriak.com/riak_clusters.json").
+          to_return(:status => 200, :body => Responses::JSON::RIAK_CLUSTERS, :headers => {'Authorization' => 2})
+        riak_clusters = subject.riak_clusters
+        a_request(:get, "http://api-v2.overriak.com/riak_clusters.json").
+          with(:body => "", :headers => {'Authorization' => '2'}).
+          should have_been_made.once
+      end
+    end
+
     describe 'once configured' do 
       before do 
         subject.configure do |config|

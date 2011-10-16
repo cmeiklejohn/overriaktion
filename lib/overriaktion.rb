@@ -17,7 +17,13 @@ module Overriaktion
 
   class << self
     def new(options = {})
-      Client.instance
+      Client.instance.tap do |instance|
+        instance.configure do |config|
+          options.each_pair do |key, value| 
+            config.send("#{key}=".to_sym, value)
+          end
+        end
+      end
     end
 
     def method_missing(method, *args, &block)
