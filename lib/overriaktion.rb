@@ -17,6 +17,8 @@ module Overriaktion
 
   autoload :EndPoints,        "overriaktion/end_points"
 
+  autoload :CLI,              "overriaktion/cli"
+
   class << self
     def new(options = {})
       Client.instance.tap do |instance|

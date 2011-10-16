@@ -8,7 +8,9 @@ require "overriaktion"
 
 include Methadone::Main
 
-main do |api_key, command, operation|
+main do |api_key, resource, operation|
+  cli = Overriaktion::CLI.new(api_key)
+  cli.dispatch(resource, operation)
 end
 
 description "Client gem for the Overriak service."
