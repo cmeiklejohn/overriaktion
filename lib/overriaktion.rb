@@ -20,12 +20,13 @@ module Overriaktion
       Client.instance
     end
 
-    def configure
-      yield configuration
+    def method_missing(method, *args, &block)
+      return super unless new.respond_to?(method)
+      new.send(method, *args, &block)
     end
 
-    def configuration 
-      Configuration.instance
+    def respond_to?(method, include_private=false)
+      new.respond_to?(method, include_private) || super(method, include_private)
     end
   end
 end
