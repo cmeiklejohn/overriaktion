@@ -12,10 +12,9 @@ module Overriaktion
 
     def initialize
       if api_key
-        self.class.headers        :Authorization => api_key
-        # self.class.default_params :api_key       => api_key
+        self.class.headers 'Authorization' => api_key
       end
-      self.class.format   :json
+      self.class.format :json
       self.class.base_uri api_host
     end
 
