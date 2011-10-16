@@ -3,6 +3,7 @@ require 'methadone/cucumber'
 require 'webmock/cucumber'
 
 require 'overriaktion'
+include Overriaktion
 
 ENV['PATH'] = "#{File.expand_path(File.dirname(__FILE__) + '/../../bin')}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
 
