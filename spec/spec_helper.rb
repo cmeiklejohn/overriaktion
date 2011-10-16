@@ -10,5 +10,6 @@ Bundler.require
 require 'overriaktion'
 
 require 'httparty'
+require 'singleton'
 require 'webmock/rspec'
 require 'json'
