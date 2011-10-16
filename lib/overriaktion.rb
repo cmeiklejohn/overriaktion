@@ -13,8 +13,6 @@ module Overriaktion
 
   autoload :EndPoints,        "overriaktion/end_points"
 
-  API_HOST = EndPoints::DEFAULT
-
   class << self
     def new(options = {})
       Client.instance.tap do |instance|
