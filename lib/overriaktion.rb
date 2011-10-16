@@ -1,4 +1,8 @@
-require "overriaktion/version"
+require 'overriaktion/version'
+
+require 'singleton'
+require 'httparty'
+require 'json'
 
 module Overriaktion
   autoload :Client,           "overriaktion/client"
