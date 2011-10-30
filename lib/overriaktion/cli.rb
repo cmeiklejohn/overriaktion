@@ -6,16 +6,16 @@ module Overriaktion
       @client = Overriaktion.new(:api_key => api_key)
     end
 
-    def dispatch(resource, operation)
-      case resource
-      when 'cluster'
-        case operation 
-        when 'list'
-          puts "performing request"
-          @client.riak_clusters.map do |cluster| 
-            puts cluster 
-          end
-        end
+    def dispatch(operation, cluster_name, node_uri)
+      case operation
+      when 'list'
+        list(cluster_name)
+      end
+    end
+
+    def list(cluster_name)
+      @client.riak_clusters.each do |cluster|
+        puts "#{cluster}"
       end
     end
   end
