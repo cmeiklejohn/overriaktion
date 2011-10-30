@@ -9,13 +9,13 @@ Feature: Overriaktion CLI
     Then the exit status should be 0
     And the output should contain:
     """
-    Usage: overriaktion api_key resource [operation]
+    Usage: overriaktion api_key operation [cluster_name] [node_uri]
 
     Client gem for the Overriak service.
     """
 
   Scenario: List riak clusters
-    When I run `overriaktion api_key cluster list` 
+    When I run `overriaktion API_KEY list`
     Then the exit status should be 0
     And the output should contain:
     """
