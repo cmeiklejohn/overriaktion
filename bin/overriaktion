@@ -4,13 +4,22 @@ $:.push File.expand_path("../../lib", __FILE__)
 
 require 'optparse'
 require 'methadone'
-require "overriaktion"
+require 'overriaktion'
 
 include Methadone::Main
 
 main do |api_key, operation, cluster_name, node_uri|
-  cli = Overriaktion::CLI.new(api_key)
-  cli.dispatch(operation, cluster_name, node_uri)
+  client = lambda do
+    Overriaktion::CLI.new(api_key).dispatch(operation, cluster_name, node_uri)
+  end
+
+  if ENV['RAILS_ENV'] == 'test'
+    VCR.use_cassette('overriak') do
+      client.call
+    end
+  else
+    client.call
+  end
 end
 
 description "Client gem for the Overriak service."
