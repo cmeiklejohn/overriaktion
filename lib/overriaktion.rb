@@ -1,4 +1,5 @@
 require 'overriaktion/version'
+require 'overriaktion/vcr'
 
 require 'singleton'
 require 'httparty'

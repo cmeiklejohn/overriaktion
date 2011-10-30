@@ -8,5 +8,3 @@ $LOAD_PATH << File.join(PROJECT_ROOT, "lib")
 Bundler.require
 
 require 'overriaktion'
-
-require 'support/vcr'
