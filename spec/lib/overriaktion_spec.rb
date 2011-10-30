@@ -28,12 +28,9 @@ module Overriaktion
       end
 
       it "should honor that configuration when making an API request" do 
-        stub_request(:get, "http://api-v2.overriak.com/riak_clusters.json").
-          to_return(:status => 200, :body => Responses::JSON::RIAK_CLUSTERS, :headers => {'Authorization' => 2})
-        riak_clusters = subject.riak_clusters
-        a_request(:get, "http://api-v2.overriak.com/riak_clusters.json").
-          with(:body => "", :headers => {'Authorization' => '2'}).
-          should have_been_made.once
+        VCR.use_cassette('api-v2 riak clusters') do 
+          riak_clusters = subject.riak_clusters
+        end
       end
     end
 
@@ -58,12 +55,9 @@ module Overriaktion
       end
 
       it "should honor that configuration when making an API request" do 
-        stub_request(:get, "http://api.overriak.com/riak_clusters.json").
-          to_return(:status => 200, :body => Responses::JSON::RIAK_CLUSTERS, :headers => {'Authorization' => 1})
-        riak_clusters = subject.riak_clusters
-        a_request(:get, "http://api.overriak.com/riak_clusters.json").
-          with(:body => "", :headers => {'Authorization' => '1'}).
-          should have_been_made.once
+        VCR.use_cassette('api riak clusters') do 
+          riak_clusters = subject.riak_clusters
+        end
       end
     end
   end
