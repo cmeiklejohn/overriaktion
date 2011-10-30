@@ -3,6 +3,10 @@ module Overriaktion
     attr_accessor :client
 
     def initialize(api_key)
+      create("key")
+    end
+
+    def create(api_key)
       @client = Overriaktion.new(:api_key => api_key)
     end
 
