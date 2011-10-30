@@ -1,6 +1,5 @@
 require 'aruba/cucumber'
 require 'methadone/cucumber'
-require 'webmock/cucumber'
 
 require 'overriaktion'
 include Overriaktion
