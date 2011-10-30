@@ -1,3 +1,4 @@
+@overriak
 Feature: Overriaktion
 
   In order to remotely administer the Overriak service
@@ -6,8 +7,6 @@ Feature: Overriaktion
 
   Background: 
     Given I have a valid API key and an instance of the client
-    And I have a riak cluster named "Localhost" with an id of "1"
-    And I have a riak node wih ip address "127.0.0.1" and id "1" in cluster "Localhost" with an id of "1"
 
   Scenario: Retrieve list of riak clusters
     When I make a request to the API to retrieve my list of riak clusters

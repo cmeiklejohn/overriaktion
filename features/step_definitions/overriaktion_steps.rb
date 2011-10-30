@@ -4,20 +4,6 @@ Given /^I have a valid API key and an instance of the client$/ do
   @client = Overriaktion.new(:api_key => '1')
 end
 
-Given /^I have a riak cluster named "([^"]*)" with an id of "([^"]*)"$/ do |cluster_name, id|
-  stub_request(:get, "http://#{Configuration.api_host}/riak_clusters/#{id}.json").
-    to_return(:status => 200, :body => Responses::JSON::RIAK_CLUSTER, :headers => {})
-  stub_request(:get, "http://#{Configuration.api_host}/riak_clusters.json").
-    to_return(:status => 200, :body => Responses::JSON::RIAK_CLUSTERS, :headers => {})
-end
-
-Given /^I have a riak node wih ip address "([^"]*)" and id "([^"]*)" in cluster "([^"]*)" with an id of "([^"]*)"$/ do |cluster_name, riak_cluster_id, ip_address, id|
-  stub_request(:get, "http://#{Configuration.api_host}/riak_clusters/#{riak_cluster_id}/riak_nodes.json").
-    to_return(:status => 200, :body => Responses::JSON::RIAK_NODES, :headers => {})
-  stub_request(:get, "http://#{Configuration.api_host}/riak_clusters/#{riak_cluster_id}/riak_nodes/#{id}.json").
-    to_return(:status => 200, :body => Responses::JSON::RIAK_NODE, :headers => {})
-end
-
 # Requests 
 
 When /^I make a request to the API to retrieve my list of riak clusters$/ do
