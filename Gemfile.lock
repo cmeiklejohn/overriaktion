@@ -4,6 +4,8 @@ PATH
     overriaktion (0.0.1)
       httparty
       methadone
+      vcr
+      webmock
 
 GEM
   remote: http://rubygems.org/
@@ -107,5 +109,3 @@ DEPENDENCIES
   rake (~> 0.9.2)
   rdoc
   rspec
-  vcr
-  webmock

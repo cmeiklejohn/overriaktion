@@ -22,9 +22,9 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('httparty')
   gem.add_dependency('methadone')
+  gem.add_dependency('vcr')
+  gem.add_dependency('webmock')
 
-  gem.add_development_dependency('vcr')
-  gem.add_development_dependency('webmock')
   gem.add_development_dependency('capybara-mechanize')
   
   gem.add_development_dependency('rdoc')
