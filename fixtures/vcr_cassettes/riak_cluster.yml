@@ -1,0 +1,44 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://dont.overriak.com:80/riak_clusters/1.json
+    body: !!null 
+    headers:
+      authorization:
+      - key
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.7.67
+      date:
+      - Sun, 30 Oct 2011 01:20:59 GMT
+      content-type:
+      - application/json; charset=utf-8
+      connection:
+      - keep-alive
+      status:
+      - 200 OK
+      last-modified:
+      - Sun, 16 Oct 2011 17:52:50 GMT
+      cache-control:
+      - must-revalidate, private, max-age=0
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      x-runtime:
+      - '0.493222'
+      x-rack-cache:
+      - miss
+      content-length:
+      - '111'
+      x-varnish:
+      - '607689642'
+      age:
+      - '0'
+      via:
+      - 1.1 varnish
+    body: ! '{"created_at":"2011-10-10T03:31:34Z","id":1,"name":"Localhost","updated_at":"2011-10-10T03:31:34Z","user_id":1}'
+    http_version: '1.1'
