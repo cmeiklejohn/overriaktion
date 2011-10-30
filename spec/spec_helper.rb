@@ -9,4 +9,4 @@ Bundler.require
 
 require 'overriaktion'
 
-require 'webmock/rspec'
+require 'support/vcr'
