@@ -8,7 +8,7 @@ module Overriaktion
     specify { subject.name.should == "Localhost" }
 
     it "returns it's riak nodes" do 
-      VCR.use_cassette('riak nodes') do 
+      VCR.use_cassette('overriak') do 
         riak_nodes = subject.riak_nodes
         riak_nodes.length.should == 1
         riak_nodes.each { |riak_node| riak_node.should be_a_kind_of(RiakNode) }
@@ -16,7 +16,7 @@ module Overriaktion
     end
     
     it "returns one riak node in it's cluster" do
-      VCR.use_cassette('riak node') do 
+      VCR.use_cassette('overriak') do 
         riak_node = subject.riak_node(1)
         riak_node.should be_a_kind_of(RiakNode)
       end

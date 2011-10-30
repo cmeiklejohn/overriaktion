@@ -28,7 +28,7 @@ module Overriaktion
       end
 
       it "should honor that configuration when making an API request" do 
-        VCR.use_cassette('api-v2 riak clusters') do 
+        VCR.use_cassette('api-v2') do 
           riak_clusters = subject.riak_clusters
         end
       end
@@ -55,7 +55,7 @@ module Overriaktion
       end
 
       it "should honor that configuration when making an API request" do 
-        VCR.use_cassette('api riak clusters') do 
+        VCR.use_cassette('api') do 
           riak_clusters = subject.riak_clusters
         end
       end

@@ -10,7 +10,7 @@ module Overriaktion
     specify { subject.username.should == "root" }
 
     it "returns it's riak cluster" do 
-      VCR.use_cassette('riak cluster') do 
+      VCR.use_cassette('overriak') do 
         riak_cluster = subject.riak_cluster
         riak_cluster.should be_a_kind_of(RiakCluster)
       end
