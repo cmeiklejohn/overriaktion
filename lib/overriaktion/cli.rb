@@ -16,8 +16,10 @@ module Overriaktion
       end
     end
 
-    def self.dispatch(operation, cluster_name, node_uri)
-      self.new.dispatch(*args)
+    def self.dispatch(api_key, operation, cluster_name, node_uri)
+      if client = self.new(api_key)
+        client.dispatch(operation, cluster_name, node_uri)
+      end
     end
 
     # Dispatch mechanisms

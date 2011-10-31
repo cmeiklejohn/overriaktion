@@ -10,7 +10,7 @@ include Methadone::Main
 
 main do |api_key, operation, cluster_name, node_uri|
   client = lambda do
-    Overriaktion::CLI.new(api_key).dispatch(operation, cluster_name, node_uri)
+    Overriaktion::CLI.dispatch(api_key, operation, cluster_name, node_uri)
   end
 
   if ENV['RAILS_ENV'] == 'test'
