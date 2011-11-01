@@ -1,5 +1,5 @@
 @overriak
-Feature: Overriaktion
+Feature: Client
 
   In order to remotely administer the Overriak service
   As a registered user with an API key
