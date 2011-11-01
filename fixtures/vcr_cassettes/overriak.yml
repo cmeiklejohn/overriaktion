@@ -171,3 +171,34 @@
       - 1.1 varnish
     body: ! '{"created_at":"2011-10-10T03:31:41Z","id":1,"ip_address":"127.0.0.1","port":"8098","riak_cluster_id":1,"updated_at":"2011-10-10T21:14:14Z","username":"root"}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://dont.overriak.com:80/samples?id=1&sample=response
+    body: !!null 
+    headers:
+      authorization:
+      - '1'
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.7.67
+      date:
+      - Tue, 01 Nov 2011 03:41:53 GMT
+      content-type:
+      - text/html; charset=utf-8
+      connection:
+      - keep-alive
+      status:
+      - 200 OK
+      content-length:
+      - '728'
+      x-runtime:
+      - '0.223045'
+      x-rack-cache:
+      - invalidate, pass
+    body: !!null 
+    http_version: '1.1'
