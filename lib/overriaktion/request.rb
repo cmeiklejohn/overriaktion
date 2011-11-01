@@ -21,5 +21,9 @@ module Overriaktion
     def get(uri) 
       self.class.get(uri)
     end
+
+    def post(uri, query) 
+      self.class.post(uri, :query => query)
+    end
   end
 end
