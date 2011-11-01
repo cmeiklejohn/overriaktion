@@ -2,23 +2,27 @@ require 'spec_helper'
 
 module Overriaktion
   describe RiakCluster do 
-    subject { RiakCluster.new(JSON.parse(Responses::JSON::RIAK_CLUSTER)) }
+    subject { riak_cluster } 
 
-    specify { subject.id.should == 1 }
-    specify { subject.name.should == "Localhost" }
+    context 'with riak nodes' do 
+      let(:riak_cluster) { RiakCluster.new(:id => 1) }
 
-    it "returns it's riak nodes" do 
-      VCR.use_cassette('overriak') do 
+      it "returns it's riak nodes" do 
+        Client.instance.should_receive(:riak_nodes)
         riak_nodes = subject.riak_nodes
-        riak_nodes.length.should == 1
-        riak_nodes.each { |riak_node| riak_node.should be_a_kind_of(RiakNode) }
+      end
+      
+      it "returns one riak node in it's cluster" do
+        Client.instance.should_receive(:riak_node)
+        riak_node = subject.riak_node(1)
       end
     end
-    
-    it "returns one riak node in it's cluster" do
-      VCR.use_cassette('overriak') do 
-        riak_node = subject.riak_node(1)
-        riak_node.should be_a_kind_of(RiakNode)
+
+    context 'with a name' do 
+      let(:riak_cluster) { RiakCluster.new(:name => 'Name') } 
+
+      it "returns it's name" do
+        subject.to_s.should == "Name"
       end
     end
   end

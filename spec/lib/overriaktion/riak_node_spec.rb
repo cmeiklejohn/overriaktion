@@ -20,7 +20,7 @@ module Overriaktion
                      :port       => '8098')
       end
 
-      it "returns it's riak cluster" do
+      it "returns it's uri" do
         subject.to_s.should == "root@127.0.0.1:8098"
       end
     end
