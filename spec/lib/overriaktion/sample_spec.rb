@@ -14,7 +14,7 @@ module Overriaktion
       specify { subject.ip_address.should == '127.0.0.1' } 
 
       it 'is able to be sampled' do 
-        VCR.use_cassette('riak') do 
+        VCR.use_cassette('overriak') do 
           subject.perform.should be_true
         end
       end
