@@ -10,44 +10,32 @@ When /^I make a request to the API to retrieve my list of riak clusters$/ do
   @riak_clusters = @client.riak_clusters
 end
 
-When /^I make a request to the API to retrieve one riak cluster with an id of "([^"]*)"$/ do |id|
-  @riak_cluster = @client.riak_cluster(id)
+When /^I make a request to the API to retrieve one riak cluster$/ do
+  @riak_cluster = @client.riak_cluster(1)
 end
 
-When /^I make a request to the API to retrieve my list of riak nodes in cluster "([^"]*)" with an id of "([^"]*)"$/ do |cluster_name, id|
-  @riak_cluster = @client.riak_cluster(id)
-  @riak_nodes   = @riak_cluster.riak_nodes
+When /^I make a request to the API to retrive the riak clusters riak nodes$/ do
+  @riak_nodes = @riak_cluster.riak_nodes
 end
 
-When /^I make a request to the API to retrieve the riak node with ip "([^"]*)" and id "([^"]*)" in cluster "([^"]*)" with an id of "([^"]*)"$/ do |ip_address, id, cluster_name, riak_cluster_id|
-  @riak_cluster = @client.riak_cluster(riak_cluster_id)
-  @riak_node    = @riak_cluster.riak_node(id)
+When /^I make a request to the API to retrive one riak node the riak cluster$/ do
+  @riak_node = @riak_cluster.riak_node(1)
 end
 
 # Matchers 
 
-Then /^I should have an array returned with (\d+) cluster named "([^"]*)" with an id of "([^"]*)"$/ do |count, cluster_name, id|
-  @riak_clusters.select { |o| o.is_a?(RiakCluster) }.
-                 select { |o| o.id == id.to_i }.
-                 select { |o| o.name == cluster_name }.
-                 length.should == count.to_i
+Then /^I should have a list containing the "([^"]*)" riak cluster$/ do |cluster_name|
+  @riak_clusters.select { |cluster| cluster.to_s == cluster_name }.length.should == 1
 end
 
-Then /^I should have an object returned for the cluster named "([^"]*)" with an id of "([^"]*)"$/ do |cluster_name, id|
-  @riak_cluster.id.should == id.to_i
-  @riak_cluster.name.should == cluster_name
-  @riak_cluster.should be_a_kind_of(RiakCluster)
+Then /^I should have the "([^"]*)" riak cluster$/ do |cluster_name|
+  @riak_cluster.to_s.should == cluster_name
 end
 
-Then /^I should have an array returned with (\d+) node with ip_address "([^"]*)" with an id of "([^"]*)"$/ do |count, ip_address, id|
-  @riak_nodes.select { |o| o.is_a?(RiakNode) }.
-              select { |o| o.id == id.to_i }.
-              select { |o| o.ip_address == ip_address }.
-              length.should == count.to_i
+Then /^I should have a list containing the "([^"]*)" riak node$/ do |node_uri|
+  @riak_nodes.select { |node| node.to_s == node_uri }.length.should == 1
 end
 
-Then /^I should have an object returned for the riak node with ip "([^"]*)" and id "([^"]*)" in cluster named "([^"]*)" with an id of "([^"]*)"$/ do |ip_address, id, cluster_name, riak_cluster_id|
-  @riak_node.id.should == id.to_i
-  @riak_node.ip_address.should == ip_address
-  @riak_node.should be_a_kind_of(RiakNode)
+Then /^I should have the "([^"]*)" riak node$/ do |node_uri|
+  @riak_node.to_s.should == node_uri
 end
