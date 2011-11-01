@@ -37,5 +37,11 @@ module Overriaktion
     def create_sample(riak_node_id, sample)
       request.post("/samples", { :id => riak_node_id, :sample => sample })
     end
+
+    def riak_node_by_cluster_name_and_node_uri(cluster_name, node_uri)
+      if cluster = riak_clusters.detect { |cluster| cluster.name == cluster_name }
+        node = cluster.riak_nodes.detect { |node| node.to_s == node_uri }
+      end
+    end
   end
 end
