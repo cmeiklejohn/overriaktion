@@ -20,17 +20,17 @@ Gem::Specification.new do |gem|
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.require_paths = ["lib"]
 
-  gem.add_dependency('httparty')
-  gem.add_dependency('methadone')
   gem.add_dependency('vcr')
   gem.add_dependency('webmock')
+  gem.add_dependency('httparty')
+  gem.add_dependency('methadone')
 
   gem.add_development_dependency('relish')
   
   gem.add_development_dependency('rdoc')
   gem.add_development_dependency('aruba')
-  gem.add_development_dependency('rake','~> 0.9.2')
   gem.add_development_dependency('rspec') 
+  gem.add_development_dependency('rake','~> 0.9.2')
 
   gem.add_development_dependency('guard')
   gem.add_development_dependency('guard-rspec')
