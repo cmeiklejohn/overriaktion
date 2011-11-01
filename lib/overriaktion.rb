@@ -19,6 +19,8 @@ module Overriaktion
 
   autoload :CLI,              "overriaktion/cli"
 
+  autoload :Sample,           "overriaktion/sample"
+
   class << self
     def new(options = {})
       Client.instance.tap do |instance|
