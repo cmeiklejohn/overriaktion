@@ -8,7 +8,6 @@ require 'json'
 module Overriaktion
   autoload :Client,           "overriaktion/client"
   autoload :Request,          "overriaktion/request"
-  autoload :Responses,        "overriaktion/responses"
 
   autoload :Configuration,    "overriaktion/configuration"
 
