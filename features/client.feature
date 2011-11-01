@@ -2,8 +2,8 @@
 Feature: Client
 
   In order to remotely administer the Overriak service
-  As a registered user with an API key
-  I should be able to access the remote API
+  as a registered user with an API key
+  I should be able to access the remote API via the client gem.
 
   Background: 
     Given I have a valid API key and an instance of the client

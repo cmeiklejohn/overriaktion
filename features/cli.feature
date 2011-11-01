@@ -2,8 +2,8 @@
 Feature: CLI
 
   In order to remotely administer the Overriak service from the command line
-  As a registered user with an API key
-  I should be able to access the remote API via the CLI
+  as a registered user with an API key
+  I should be able to access the remote API via the CLI.
 
   Scenario: Access help
     When I run `overriaktion --help`
