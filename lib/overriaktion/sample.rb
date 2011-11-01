@@ -6,7 +6,7 @@ module Overriaktion
     end
 
     def save
-      @client.sample
+      @client.create_sample(id, @response)
     end
   end
 end

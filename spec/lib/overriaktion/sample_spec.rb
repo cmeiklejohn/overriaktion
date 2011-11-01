@@ -20,7 +20,7 @@ module Overriaktion
       end
 
       it 'is able to be saved' do 
-        Client.instance.should_receive(:sample)
+        Client.instance.should_receive(:create_sample)
         subject.save
       end
     end
