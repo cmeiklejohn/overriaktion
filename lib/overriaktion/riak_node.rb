@@ -4,6 +4,10 @@ module Overriaktion
       @client.riak_cluster(self.riak_cluster_id)
     end
 
+    def sample 
+      Sample.perform(self)
+    end
+
     def to_s
       "#{self.username}@#{self.ip_address}:#{self.port}"
     end

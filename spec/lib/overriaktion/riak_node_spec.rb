@@ -24,5 +24,19 @@ module Overriaktion
         subject.to_s.should == "root@127.0.0.1:8098"
       end
     end
+
+    context 'with a full uri and id' do
+      let(:riak_node) do 
+        RiakNode.new(:username   => 'root', 
+                     :ip_address => '127.0.0.1', 
+                     :port       => '8098',
+                     :id         => 1)
+      end
+
+      it 'can be sampled' do
+        Sample.should_receive(:perform)
+        subject.sample
+      end
+    end
   end
 end
