@@ -30,7 +30,7 @@ module Overriaktion
         puts "#{cluster}"
         
         cluster.riak_nodes.each do |node|
-          puts " - #{node}"
+          puts "  - #{node}"
         end
       end
     end
