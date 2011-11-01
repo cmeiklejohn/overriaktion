@@ -9,13 +9,7 @@ a CLI.
 
 == Usage
 
-=== Ruby client usage
-
-    client = Overriaktion.new(:api_key => 'key') # => Overriaktion::Client
-    client.riak_clusters # => [Overriaktion::RiakCluster]
-    client.riak_cluster(1) # => Overriaktion::RiakCluster
-    client.riak_cluster(id).riak_nodes # => [Overriaktion::RiakNode]
-    client.riak_cluster(id).riak_node(1) # => Overriaktion::RiakNode
+See the usage guide on {Relish}[https://www.relishapp.com/cmeiklejohn/overriaktion].
 
 == License
 
