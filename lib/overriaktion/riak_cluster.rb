@@ -7,5 +7,9 @@ module Overriaktion
     def riak_nodes
       @client.riak_nodes(self.id)
     end
+
+    def to_s
+      self.name
+    end
   end
 end

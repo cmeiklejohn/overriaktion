@@ -28,6 +28,10 @@ module Overriaktion
     def list(cluster_name)
       @client.riak_clusters.each do |cluster|
         puts "#{cluster}"
+        
+        cluster.riak_nodes.each do |node|
+          puts " - #{node}"
+        end
       end
     end
   end

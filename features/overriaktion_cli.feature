@@ -20,4 +20,5 @@ Feature: Overriaktion CLI
     And the output should contain:
     """
     Localhost
+      - root@127.0.0.1:8098
     """
