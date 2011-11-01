@@ -8,5 +8,9 @@ module Overriaktion
     def save
       @client.create_sample(id, @response)
     end
+
+    def self.perform(options = {})
+      self.new(options).perform
+    end
   end
 end
