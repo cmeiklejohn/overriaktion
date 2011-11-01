@@ -33,5 +33,9 @@ module Overriaktion
       response = request.get("/riak_clusters/#{riak_cluster_id}/riak_nodes/#{riak_node_id}.json")
       RiakNode.new(response)
     end
+
+    def create_sample(riak_node_id, sample)
+      request.post("/samples", { :id => riak_node_id, :sample => sample })
+    end
   end
 end

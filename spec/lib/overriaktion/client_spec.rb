@@ -33,5 +33,11 @@ module Overriaktion
         riak_node.should be_a_kind_of(RiakNode)
       end
     end
+
+    it "stores a riak node sample" do 
+      VCR.use_cassette('overriak') do 
+        subject.create_sample(1, "response")
+      end
+    end
   end
 end
