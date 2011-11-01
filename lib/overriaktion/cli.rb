@@ -13,6 +13,8 @@ module Overriaktion
       case operation
       when 'list'
         list(cluster_name)
+      when 'sample'
+        sample(cluster_name, node_uri)
       end
     end
 
@@ -33,6 +35,14 @@ module Overriaktion
           puts "  - #{node}"
         end
       end
+    end
+
+    def sample(cluster_name, node_uri)
+      if riak_node = @client.riak_node_by_cluster_name_and_node_uri(cluster_name, node_uri)
+        retval = riak_node.sample
+      end
+
+      puts "OK"
     end
   end
 end
