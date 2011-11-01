@@ -26,7 +26,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency('webmock')
 
   gem.add_development_dependency('relish')
-  gem.add_development_dependency('capybara-mechanize')
   
   gem.add_development_dependency('rdoc')
   gem.add_development_dependency('aruba')
