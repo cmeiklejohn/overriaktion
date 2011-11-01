@@ -2,17 +2,26 @@ require 'spec_helper'
 
 module Overriaktion
   describe RiakNode do 
-    subject { RiakNode.new(JSON.parse(Responses::JSON::RIAK_NODE)) }
+    subject { riak_node } 
 
-    specify { subject.id.should == 1 }
-    specify { subject.ip_address.should == "127.0.0.1" } 
-    specify { subject.port.should == "8098" }
-    specify { subject.username.should == "root" }
+    context 'in a riak cluster' do 
+      let(:riak_node) { RiakNode.new(:riak_cluster_id => 1) }
 
-    it "returns it's riak cluster" do 
-      VCR.use_cassette('overriak') do 
+      it "returns it's riak cluster" do
+        Client.instance.should_receive(:riak_cluster)
         riak_cluster = subject.riak_cluster
-        riak_cluster.should be_a_kind_of(RiakCluster)
+      end
+    end
+
+    context 'with a full uri' do
+      let(:riak_node) do 
+        RiakNode.new(:username   => 'root', 
+                     :ip_address => '127.0.0.1', 
+                     :port       => '8098')
+      end
+
+      it "returns it's riak cluster" do
+        subject.to_s.should == "root@127.0.0.1:8098"
       end
     end
   end
