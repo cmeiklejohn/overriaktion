@@ -15,6 +15,8 @@ module Overriaktion
         list(cluster_name)
       when 'sample'
         sample(cluster_name, node_uri)
+      else 
+        puts "'#{operation}' is not a valid operation"
       end
     end
 

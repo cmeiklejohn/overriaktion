@@ -15,6 +15,14 @@ Feature: CLI
     Client gem for the Overriak service.
     """
 
+  Scenario: Throw error with invalid switch
+    When I run `overriaktion api_key thingy`
+    Then the exit status should be 0
+    And the output should contain:
+    """
+    'thingy' is not a valid operation
+    """
+
   Scenario: List riak clusters
     When I run `overriaktion api_key list`
     Then the exit status should be 0
