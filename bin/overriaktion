@@ -13,6 +13,8 @@ main do |api_key, operation, cluster_name, node_uri|
     Overriaktion::CLI.dispatch(api_key, operation, cluster_name, node_uri)
   end
 
+  # Use VCR if the rails env is set, otherwise don't.
+  #
   if ENV['RAILS_ENV'] == 'test'
     VCR.use_cassette('overriak') do
       client.call
