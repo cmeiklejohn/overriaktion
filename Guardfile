@@ -4,7 +4,6 @@ guard 'rspec', :version => 2 do
   watch('spec/spec_helper.rb')  { "spec" }
 end
 
-
 guard 'cucumber' do
   watch(%r{^bin/.+$}) { 'features' }
   watch(%r{^features/.+\.feature$})
